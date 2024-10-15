@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Language" content="pl" />
+  <meta name="Author" content="Michał Raszkowski" />
+  <title>Galeria</title>
+  <script src="kolorujtlo.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: rgb(182, 190, 196);
+    }
+
+    h1 {
+      font-size: 60px;
+      text-align: center;
+      color: rgb(45, 45, 43);
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background-color: rgb(191, 191, 176);
+    }
+
+    .button {
+      background-color: rgba(56, 146, 198, 0.55);
+      backdrop-filter: blur(100px);
+      color: white;
+      margin-left: 150px;
+      padding: 13px 20px;
+      border-radius: 5px;
+      font-size: 22px;
+      text-decoration: none;
+      margin-right: 350px;
+    }
+
+    .gallery {
+      display: inline-block;
+      border: 1px solid hsl(0, 0%, 60%);
+      margin: 5px;
+      width: 300px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 80%;
+      margin: 0 auto;
+      padding-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .gallery .description {
+      padding: 10px;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .gallery :hover {
+      transform: scale(1.25);
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+    }
+
+    .color-picker {
+      text-align: center;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="robertKubica.html" class="button">Menu</a>
+    <h1>Galeria zdjęć</h1>
+  </header>
+  <div class="color-picker">
+    <label for="colorInput">Wprowadź kolor:</label>
+    <input type="text" id="colorInput" placeholder="#FFFFFF">
+    <button onclick="changeBackground(document.getElementById('colorInput').value)">Zmień kolor tła</button>
+    <form method="post" name="background">
+      <input type="button" value="zółty" onclick="changeBackground('#FFF000')">
+      <input type="button" value="czarny" onclick="changeBackground('#000000')">
+      <input type="button" value="biały" onclick="changeBackground('#FFFFFF')">
+      <input type="button" value="zielony" onclick="changeBackground('#00FF00')">
+      <input type="button" value="niebieski" onclick="changeBackground('#0000FF')">
+      <input type="button" value="pomaranczowy" onclick="changeBackground('#FF8000')">
+      <input type="button" value="szary" onclick="changeBackground('#C0C0C0')">
+      <input type="button" value="czerwony" onclick="changeBackground('#FF0000')">
+    </form>
+  </div>
+  <main class="container">
+
+    <div class="gallery">
+      <a target="_blank" href="images/zdj1.webp">
+        <img src="images/zdj1.webp" alt="zdj1">
+      </a>
+      <div class="description">Pierwsze i ostatnie zwycięstwo w F1</div>
+    </div>
+    <div class="gallery">
+      <a target="_blank" href="images/zdj2.webp">
+        <img src="images/zdj2.webp" alt="zdj2">
+      </a>
+      <div class="description">Podium w Portimao</div>
+    </div>
+    <div class="gallery">
+      <a target="_blank" href="images/zdj3.jpg">
+        <img src="images/zdj3.jpg" alt="zdj3">
+      </a>
+      <div class="description">Robert z Lewisem Hamiltonem </div>
+    </div>
+    <div class="gallery">
+      <a target="_blank" href="images/zdj4.jpg">
+        <img src="images/zdj4.jpg" alt="zdj4">
+      </a>
+      <div class="description">Robert z Sebastianem Vettelem</div>
+    </div>
+    <div class="gallery">
+      <a target="_blank" href="images/zdj5.jpg">
+        <img src="images/zdj5.jpg" alt="zdj5">
+      </a>
+      <div class="description">Wypadek w Kanadzie w 2007r</div>
+    </div>
+    <div class="gallery">
+      <a target="_blank" href="images/zdj6.png">
+        <img src="images/zdj6.png" alt="zdj6">
+      </a>
+      <div class="description">Niesławny wypadek podczas rajdu w Andorze</div>
+    </div>
+    <div class="gallery">
+      <a target="_blank" href="images/zdj7.jpg">
+        <img src="images/zdj7.jpg" alt="zdj7">
+      </a>
+      <div class="description">Robert w sympatycznym gronie</div>
+    </div>
+    <div class="gallery">
+      <a target="_blank" href="images/zdj8.jpg">
+        <img src="images/zdj8.jpg" alt="zdj8">
+      </a>
+      <div class="description">Wiadomośc do Jerzego Rosoła</div>
+    </div>
+  </main>
+</body>
+
+</html>
