@@ -111,7 +111,20 @@ function UsunPodstrone($conn, $id)
   }
   $stmt->close();
 }
+if (isset($_POST['x1_submit'])) {
+  $email = $_POST['login_email'] ?? '';
+  $password = $_POST['login_pass'] ?? '';
 
+  // Sprawdzanie loginu i hasła
+  if ($email === $login && $password === $pass) {
+    $_SESSION['logged_in'] = true;
+    header('Location: admin.php'); // Przekierowanie po zalogowaniu
+    exit;
+  } else {
+    echo FormularzLogowania('Nieprawidłowy login lub hasło.');
+    exit;
+  }
+}
 
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
   echo FormularzLogowania();
