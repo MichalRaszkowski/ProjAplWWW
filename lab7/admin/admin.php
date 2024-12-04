@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'cfg.php';
+include '../cfg.php';
 
 function FormularzLogowania($error = '')
 {
@@ -21,7 +21,8 @@ function FormularzLogowania($error = '')
     ';
   return $wynik;
 }
-function ListaPodstron($conn) {
+function ListaPodstron($conn)
+{
   $wynik = '<h2>Lista podstron</h2>';
   $wynik .= '<table border="1" cellspacing="0" cellpadding="5">
               <tr>
@@ -34,25 +35,26 @@ function ListaPodstron($conn) {
   $result = $conn->query($query);
 
   if ($result->num_rows > 0) {
-      while ($row = $result->fetch_assoc()) {
-          $wynik .= '<tr>';
-          $wynik .= '<td>' . htmlspecialchars($row['id']) . '</td>';
-          $wynik .= '<td>' . htmlspecialchars($row['page_title']) . '</td>';
-          $wynik .= '<td>
+    while ($row = $result->fetch_assoc()) {
+      $wynik .= '<tr>';
+      $wynik .= '<td>' . htmlspecialchars($row['id']) . '</td>';
+      $wynik .= '<td>' . htmlspecialchars($row['page_title']) . '</td>';
+      $wynik .= '<td>
                         <a href="?action=edit&id=' . $row['id'] . '">Edytuj</a> | 
                         <a href="?action=delete&id=' . $row['id'] . '" onclick="return confirm(\'Czy na pewno chcesz usunąć tę podstronę?\')">Usuń</a>
                      </td>';
-          $wynik .= '</tr>';
-      }
+      $wynik .= '</tr>';
+    }
   } else {
-      $wynik .= '<tr><td colspan="3">Brak podstron w bazie danych.</td></tr>';
+    $wynik .= '<tr><td colspan="3">Brak podstron w bazie danych.</td></tr>';
   }
 
   $wynik .= '</table>';
   return $wynik;
 }
 
-function EdytujPodstrone($conn, $id) {
+function EdytujPodstrone($conn, $id)
+{
   $query = "UPDATE moja_strona SET page_title = ?, page_content = ?, alias = ?, status = ? WHERE id = ? LIMIT 1"; // TIP 3
   $stmt = $conn->prepare($query);
 
@@ -65,15 +67,16 @@ function EdytujPodstrone($conn, $id) {
   $stmt->execute();
 
   if ($stmt->affected_rows > 0) {
-      echo '<p>Podstrona została zaktualizowana.</p>';
+    echo '<p>Podstrona została zaktualizowana.</p>';
   } else {
-      echo '<p>Nie udało się zaktualizować podstrony.</p>';
+    echo '<p>Nie udało się zaktualizować podstrony.</p>';
   }
   $stmt->close();
 }
 
 
-function DodajNowaPodstrone($conn) {
+function DodajNowaPodstrone($conn)
+{
   $query = "INSERT INTO moja_strona (page_title, page_content, alias, status) VALUES (?, ?, ?, ?) LIMIT 1"; // TIP 3
   $stmt = $conn->prepare($query);
 
@@ -86,48 +89,48 @@ function DodajNowaPodstrone($conn) {
   $stmt->execute();
 
   if ($stmt->affected_rows > 0) {
-      echo '<p>Nowa podstrona została dodana.</p>';
+    echo '<p>Nowa podstrona została dodana.</p>';
   } else {
-      echo '<p>Nie udało się dodać podstrony.</p>';
+    echo '<p>Nie udało się dodać podstrony.</p>';
   }
   $stmt->close();
 }
 
 
-function UsunPodstrone($conn, $id) {
+function UsunPodstrone($conn, $id)
+{
   $query = "DELETE FROM moja_strona WHERE id = ? LIMIT 1"; // TIP 3
   $stmt = $conn->prepare($query);
   $stmt->bind_param("i", $id);
   $stmt->execute();
 
   if ($stmt->affected_rows > 0) {
-      echo '<p>Podstrona została usunięta.</p>';
+    echo '<p>Podstrona została usunięta.</p>';
   } else {
-      echo '<p>Nie udało się usunąć podstrony.</p>';
+    echo '<p>Nie udało się usunąć podstrony.</p>';
   }
   $stmt->close();
 }
 
 
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    echo FormularzLogowania();
-    exit;
+  echo FormularzLogowania();
+  exit;
 }
 
 if (isset($_GET['action'])) {
-    $action = $_GET['action'];
-    $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+  $action = $_GET['action'];
+  $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-    if ($action === 'delete') {
-        UsunPodstrone($conn, $id);
-    } elseif ($action === 'edit') {
-        EdytujPodstrone($conn, $id);
-    } elseif ($action === 'add') {
-        DodajNowaPodstrone($conn);
-    }
+  if ($action === 'delete') {
+    UsunPodstrone($conn, $id);
+  } elseif ($action === 'edit') {
+    EdytujPodstrone($conn, $id);
+  } elseif ($action === 'add') {
+    DodajNowaPodstrone($conn);
+  }
 }
 
 echo ListaPodstron($conn);
 
 $conn->close();
-?>
