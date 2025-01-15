@@ -1,0 +1,81 @@
+header {
+    width: 100vw;
+    height: 100px;
+    background-color: black;
+    border-bottom: solid 1px rgba(16, 16, 16, 0.1);
+    font-family: 'Poppins';
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .inner {
+    display: flex;
+    width: 1300px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 100px;
+    width: 120px;
+    margin-top: 5px;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav a {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.55);
+    padding: 10px 5px;
+    border-radius: 5px;
+    font-size: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    /* Dodane właściwości */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 44px;
+    /* Stała wysokość dla wszystkich przycisków */
+    line-height: 1.2;
+    /* Odpowiedni odstęp między liniami tekstu */
+    white-space: normal;
+    /* Pozwala na zawijanie tekstu */
+    word-wrap: break-word;
+    /* Zapobiega wychodzeniu tekstu poza kontener */
+    min-width: 100px;
+    /* Minimalna szerokość przycisku */
+}
+
+header nav a:hover {
+    background-color: rgba(255, 0, 0, 0.75);
+}
+
+header nav ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+header nav li {
+    list-style: none;
+    margin-right: 80px;
+    /* Dodana właściwość */
+    display: flex;
+    align-items: center;
+}
+
+header nav li:last-of-type {
+    margin-right: 0;
+}
