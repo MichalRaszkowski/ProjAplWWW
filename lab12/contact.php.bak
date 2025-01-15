@@ -41,7 +41,7 @@ function WyslijMailKontakt($name, $email, $message)
         $mail->Host = 'smtp-mail.outlook.com'; // Adres serwera SMTP
         $mail->SMTPAuth = true;
         $mail->Username = '169357@student.uwm.edu.pl'; // Twój email
-        $mail->Password = 'xxx';    // Hasło do emaila
+        $mail->Password = 'Marchewkowe123';    // Hasło do emaila
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
@@ -77,7 +77,7 @@ function PrzypomnijHaslo($adminEmail)
         $mail->Host = 'smtp-mail.outlook.com'; // Adres serwera SMTP
         $mail->SMTPAuth = true;
         $mail->Username = '169357@student.uwm.edu.pl'; // Twój email
-        $mail->Password = 'xxx';    // Hasło do emaila
+        $mail->Password = 'Marchewkowe123';    // Hasło do emaila
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
